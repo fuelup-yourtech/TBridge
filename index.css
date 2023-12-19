@@ -391,10 +391,11 @@ a:hover {
   width: 25%;
   padding: 10px;
   cursor: pointer;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
+}
+@media (max-width:576px) {
+  .course-card{
+  width:48%;
+  }
 }
 .card-img-top{
   width: 100px;
@@ -431,4 +432,55 @@ a:hover {
   width: 100%;
   display: flex;
   justify-content: end;
+}
+.viewCoursesMobile{
+  background-color: black;
+  width: 100px;
+  height: 40px;
+  color: #EDA925;
+  border-radius: 8px;
+  border-color: #EDA925;
+  margin: 8px 0;
+  /* right: 0;
+  position: absolute;
+  margin-right: 10px; */
+}
+@media (min-width:576px) {
+  .viewCoursesMobile {
+     display: none;
+  }
+  .sideBar{
+    display: none;
+  }
+}
+.sideBar{
+  margin-top: 94px;
+  transition: all 0.5s ease-in;
+  height: 100%;
+  background-color: #EDA925;
+  width: 90%;
+  right: 0;
+  position:fixed;
+  transform: translateX(100%);
+}
+.sideBar-heading{
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  display: flex;
+  justify-content: space-between;
+}
+.sideBar-dropdownoption{
+  padding: 10px 4px;
+  box-shadow: rgba(0, 0, 0, 0.20) 0px 25px 20px -20px;
+  display: flex;
+  flex-direction: column;
+}
+.allcourses,.flagship,.financetools,.combopackages,.freecourses{
+   
+}
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 300px;
+  overflow-y: scroll;
 }
