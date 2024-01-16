@@ -144,7 +144,7 @@
   }
   
   body {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Playfair Display', serif !important;
     color: #000;
   }
   
@@ -217,6 +217,8 @@
   
   .bootstrap-styles .dropdown-item {
     font-size: 15px;
+    font-family: 'Playfair Display', serif !important;
+    text-transform: uppercase !important;
   }
   
   .spectre .avatar {
@@ -413,25 +415,38 @@
 }
 @media screen and (max-width:576px) {
   .course-card{
-  width:48%;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   }
 }
 .card-img-top{
   width: 100px;
   height: fit-content;
 }
+.card-img-mobile{
+  width: 70px;
+  height:50px
+}
 .showcourses{
-  width: 600px;
+  width: 700px;
   display: flex;
   flex-direction: row;
-  overflow-y: scroll;
+  overflow-y: hidden;
   justify-content: flex-start;
   flex-wrap: wrap;
   max-height: 400px;
 }
 .card-coursename{
-  font-size: 11px !important;
-  margin-top: 4px !important;
+  margin-left: 10px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px !important;
+  color: #3c4852;
+  line-height: 22px;
+  text-decoration: none;
+  font-family: 'Playfair Display', serif !important;
 }
 .card-courseauthor{
   font-size: 14px;
@@ -443,9 +458,8 @@
   background-color: #000 !important;
   height: 35px !important;
   width: 150px !important;
-  border-radius: 7px !important;
+  border-radius: 10px !important;
   margin: 5px !important;
-  color: #f0a322 !important;
   font-weight: 700 !important;
   display: flex !important;
   justify-content: center !important;
@@ -456,18 +470,17 @@
   width: 100%;
   display: flex;
   justify-content: end;
+  height: 50px;
+  margin-right: 10px;
 }
 .viewCoursesMobile{
   background-color: black !important;
   width: 100px !important;
   height: 40px !important;
-  color: #EDA925 !important;
+  color: #eda925 !important;
   border-radius: 8px !important;
   border-color: #EDA925 !important;
   margin: 8px 0 !important;
-  /* right: 0;
-  position: absolute;
-  margin-right: 10px; */
 }
 @media screen and (min-width:576px) {
   .viewCoursesMobile {
@@ -477,37 +490,83 @@
     display: none !important;
   }
 }
+@media screen and (max-width:576px) {
+  .dropdown-courses{
+    display: none !important;
+  }
+}
 .sideBar{
-  margin-top: 94px !important;
+  margin-top: 103px !important;
   transition: all 0.5s ease-in !important;
   height: 100% !important;
-  background-color: #EDA925 !important;
+  background-color: white !important;
   width: 90% !important;
   right: 0 !important;
   position:fixed;
-  z-index: 100 !important;
+  z-index: 205 !important;
+  overflow-y: scroll;
   transform: translateX(100%);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.2);
 }
 .sideBar-heading{
   padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  box-shadow:  rgba(0, 0, 0, 0.25) 0px 4px 8px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.sidebar-dropdownclose{
+  font-size: 18px !important;
 }
 .sideBar-dropdownoption{
   padding: 10px 4px;
-  box-shadow: rgba(0, 0, 0, 0.20) 0px 25px 20px -20px;
+  border-bottom: .5px solid #ebeced!important;
   display: flex;
   flex-direction: column;
+  padding-left: 15px;
+  height: fit-content !important;
+  box-shadow: none;
 }
 .allcourses,.flagship,.financetools,.combopackages,.freecourses{
    
 }
+.dropdown-toggle{
+  font-family: 'Playfair Display', serif !important;
+}
 .content{
   display: flex;
   flex-wrap: wrap;
-  max-height: 300px;
-  overflow-y: scroll;
+}
+.button-33 {
+  border-radius: 10px;
+  font-size: 13px!important;
+    padding: 10px !important;
+    margin: 10px!important;
+  font-family: 'Playfair Display', serif !important;
+  background-image: linear-gradient(to right, #000000 0%, #b7b4b4 51%, #000000 100%) !important;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    font-weight: 600;
+    color: #fff!important;
+    text-decoration: none!important;
+    cursor: pointer;
+    letter-spacing: 1px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-size: 300% 100%;
+    padding: 10px 50px;
+    border-radius: 15px;
+}
+
+.button-33:hover {
+  transition: all .4s ease-in-out;
+  background-position: 100% 0
+}
+.view-allcourses-div{
+  width: 80%;
+  margin-left: 15px;
+  margin-top: 15px;
 }
 </style>
 <div class="bootstrap-styles">
@@ -550,7 +609,7 @@
           <ul id="iu50m" class="navbar-nav mx-auto">
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                class="nav-link dropdown-toggle dropdown-courses"
                 href="/s/pages/courses"
                 id="navbardrop"
                 data-toggle="dropdown"
@@ -560,13 +619,13 @@
               <div class="dropdown-menu animate slideIn">
                 <div class="courses-dropdown">
                   <div class="dropdown-options-courses">
-                    <a
+                    <!-- <a
                       class="dropdown-item"
                       target="_blank"
                       href="/s/pages/courses"
                     >
                       <b>All Courses</b></a
-                    >
+                    > -->
                     <a
                       class="dropdown-item"
                       target="_blank"
@@ -592,6 +651,15 @@
                       href="/s/store/courses/Free"
                       ><b>Free Courses</b></a
                     >
+                    <div class="view-allcourses-div">
+                    <a
+                    class="dropdown-item button-33"
+                    target="_blank"
+                    href="/s/pages/courses"
+                    ><b>VIEW ALL COURSES</b></a
+                    
+                  >
+                  </div>
                   </div>
                   <div class="showcourses" id="showCoursesContent"></div>
                 </div>
@@ -669,39 +737,44 @@
   </div>
   <div class="sideBar">
     <div class="sideBar-heading">
-      <h3>Courses</h3>
-      <div onclick="toggleSideDrawer()">X</div>
+      <h3 style="margin-bottom: 0; font-size: 20px; font-weight:bold ;font-family: 'Playfair Display', serif !important;
+    ">COURSES</h3>
+      <div onclick="toggleSideDrawer()" class="sidebar-dropdownclose">X</div>
     </div>
     <div class="sideBar-dropdown" id="coursesDropdown">
-      <div
-        class="sideBar-dropdownoption allcourses"
-        onclick="toggleDropdown('All Courses')"
-      >
-        <div class="dropdown-toggle">All Courses</div>
-      </div>
       <div
         class="sideBar-dropdownoption flagship"
         onclick="toggleDropdown('Flagship MasterClasses [Domain-Wise]')"
       >
-        <div class="dropdown-toggle">Flagship MasterClasses [Domain-Wise]</div>
+        <div class="dropdown-toggle">FLAGSHIP MASTERCLASSES</div>
       </div>
       <div
         class="sideBar-dropdownoption financetools"
         onclick="toggleDropdown('Finance Tools MasterClasses')"
       >
-        <div class="dropdown-toggle">Finance Tools</div>
+        <div class="dropdown-toggle">FINANCE TOOLS</div>
       </div>
       <div
         class="sideBar-dropdownoption combopackages"
         onclick="toggleDropdown('Combo Packages')"
       >
-        <div class="dropdown-toggle">Combo Packages</div>
+        <div class="dropdown-toggle">COMBO PACKAGES</div>
       </div>
       <div
         class="sideBar-dropdownoption freecourses"
         onclick="toggleDropdown('Free Courses')"
       >
-        <div class="dropdown-toggle">Free Courses</div>
+        <div class="dropdown-toggle">FREE COURSES</div>
+      </div>
+      <div class="view-allcourses-div" style="width: 50% ; margin-bottom:110px">
+        <a
+        class="dropdown-item button-33"
+        target="_blank"
+        href="/s/pages/courses"
+        style="background-color: black; color:white ;border-radius: 7px;"
+        ><b>View All Courses</b></a
+        
+      >
       </div>
     </div>
   </div>
@@ -761,7 +834,7 @@
       {
         image:
           "https://dz8fbjd9gwp2s.cloudfront.net/courses/64e5cba9e4b0877ce06dc583/64e5cba9e4b0877ce06dc583_scaled_cover.jpg?v=2",
-        coursename: "Financial Planning & Analaysis ...",
+        coursename: "Financial Planning & Analysis ...",
         author: "CA Abhinav Aggarwal & CA G...",
         mrp: "Rs 8000",
         offerprice: "Rs 3499/-",
@@ -909,62 +982,62 @@
         offerprice: "Rs 2749.0/-",
         url: "https://www.thinkingbridge.in/courses/Audit-MasterClass--Interview-MasterClass-Combo-6470774ee4b061752c15fc69",
       },
-      {
-        image:
-          "https://dz8fbjd9gwp2s.cloudfront.net/courses/628f35c80cf22aee960e5581/628f35c80cf22aee960e5581_scaled_cover.jpg?v=4",
-        coursename:
-          "Combo Pack for Power Bi, Alteryx, Python & SQL MasterClass",
-        author: "",
-        mrp: "Rs 3538",
-        offerprice: "Rs 1499/-",
-        url: "https://www.thinkingbridge.in/courses/Business-Analytics--Data-Analytics-Combo-628f35c80cf22aee960e5581",
-      },
-      {
-        image:
-          "https://dz8fbjd9gwp2s.cloudfront.net/courses/6566dfd7e4b0e28126ea6983/6566dfd7e4b0e28126ea6983_scaled_cover.jpg?v=1",
-        coursename: "Combo For Direct Tax & GST MasterClass",
-        author: "",
-        mrp: "Rs 16000",
-        offerprice: "Rs 3499/-",
-        url: "https://www.thinkingbridge.in/courses/Combo-Pack-for-Direct-Tax--GST-MasterClass-6566dfd7e4b0e28126ea6983",
-      },
-      {
-        image:
-          "https://dz8fbjd9gwp2s.cloudfront.net/courses/6566e862e4b0722d33d21d9a/6566e862e4b0722d33d21d9a_scaled_cover.jpg?v=1",
-        coursename: "Combo for FP&A & Management Consulting MasterClass",
-        author: "",
-        mrp: "Rs 8258",
-        offerprice: "Rs 3499/-",
-        url: "https://www.thinkingbridge.in/courses/Combo-for-FPA--Management-Consulting-MasterClass-6566e862e4b0722d33d21d9a",
-      },
-      {
-        image:
-          "https://dz8fbjd9gwp2s.cloudfront.net/courses/6566f301e4b04d182ec0ef44/6566f301e4b04d182ec0ef44_scaled_cover.jpg?v=1",
-        coursename:
-          "Combo for Management Consulting & Power BI, Alteryx MasterClass",
-        author: "",
-        mrp: "Rs 16000",
-        offerprice: "Rs 2499/-",
-        url: "https://www.thinkingbridge.in/courses/Combo-for-Management-Consulting--Power-BI-Alteryx-MasterClass-6566f301e4b04d182ec0ef44",
-      },
-      {
-        image:
-          "https://dz8fbjd9gwp2s.cloudfront.net/courses/6566f8dce4b0bc29ae83d8ad/6566f8dce4b0bc29ae83d8ad_scaled_cover.jpg?v=1",
-        coursename: "Combo for FPA, Excel and Tableau MasterClass",
-        author: "",
-        mrp: "Rs 15000",
-        offerprice: "Rs 2998.5/-",
-        url: "https://www.thinkingbridge.in/courses/Combo-for-FPA-Excel-and-Tableau-MasterClass-6566f8dce4b0bc29ae83d8ad",
-      },
-      {
-        image:
-          "https://dz8fbjd9gwp2s.cloudfront.net/courses/6567010de4b0bc29ae83ef1f/6567010de4b0bc29ae83ef1f_scaled_cover.jpg?v=1",
-        coursename: "Combo for FP&A and Audit MasterClass",
-        author: "",
-        mrp: "Rs 16000",
-        offerprice: "Rs 3499/-",
-        url: "https://www.thinkingbridge.in/courses/Combo-for-FPA-and-Audit-MasterClass-6567010de4b0bc29ae83ef1f",
-      },
+      // {
+      //   image:
+      //     "https://dz8fbjd9gwp2s.cloudfront.net/courses/628f35c80cf22aee960e5581/628f35c80cf22aee960e5581_scaled_cover.jpg?v=4",
+      //   coursename:
+      //     "Combo Pack for Power Bi, Alteryx, Python & SQL MasterClass",
+      //   author: "",
+      //   mrp: "Rs 3538",
+      //   offerprice: "Rs 1499/-",
+      //   url: "https://www.thinkingbridge.in/courses/Business-Analytics--Data-Analytics-Combo-628f35c80cf22aee960e5581",
+      // },
+      // {
+      //   image:
+      //     "https://dz8fbjd9gwp2s.cloudfront.net/courses/6566dfd7e4b0e28126ea6983/6566dfd7e4b0e28126ea6983_scaled_cover.jpg?v=1",
+      //   coursename: "Combo For Direct Tax & GST MasterClass",
+      //   author: "",
+      //   mrp: "Rs 16000",
+      //   offerprice: "Rs 3499/-",
+      //   url: "https://www.thinkingbridge.in/courses/Combo-Pack-for-Direct-Tax--GST-MasterClass-6566dfd7e4b0e28126ea6983",
+      // },
+      // {
+      //   image:
+      //     "https://dz8fbjd9gwp2s.cloudfront.net/courses/6566e862e4b0722d33d21d9a/6566e862e4b0722d33d21d9a_scaled_cover.jpg?v=1",
+      //   coursename: "Combo for FP&A & Management Consulting MasterClass",
+      //   author: "",
+      //   mrp: "Rs 8258",
+      //   offerprice: "Rs 3499/-",
+      //   url: "https://www.thinkingbridge.in/courses/Combo-for-FPA--Management-Consulting-MasterClass-6566e862e4b0722d33d21d9a",
+      // },
+      // {
+      //   image:
+      //     "https://dz8fbjd9gwp2s.cloudfront.net/courses/6566f301e4b04d182ec0ef44/6566f301e4b04d182ec0ef44_scaled_cover.jpg?v=1",
+      //   coursename:
+      //     "Combo for Management Consulting & Power BI, Alteryx MasterClass",
+      //   author: "",
+      //   mrp: "Rs 16000",
+      //   offerprice: "Rs 2499/-",
+      //   url: "https://www.thinkingbridge.in/courses/Combo-for-Management-Consulting--Power-BI-Alteryx-MasterClass-6566f301e4b04d182ec0ef44",
+      // },
+      // {
+      //   image:
+      //     "https://dz8fbjd9gwp2s.cloudfront.net/courses/6566f8dce4b0bc29ae83d8ad/6566f8dce4b0bc29ae83d8ad_scaled_cover.jpg?v=1",
+      //   coursename: "Combo for FPA, Excel and Tableau MasterClass",
+      //   author: "",
+      //   mrp: "Rs 15000",
+      //   offerprice: "Rs 2998.5/-",
+      //   url: "https://www.thinkingbridge.in/courses/Combo-for-FPA-Excel-and-Tableau-MasterClass-6566f8dce4b0bc29ae83d8ad",
+      // },
+      // {
+      //   image:
+      //     "https://dz8fbjd9gwp2s.cloudfront.net/courses/6567010de4b0bc29ae83ef1f/6567010de4b0bc29ae83ef1f_scaled_cover.jpg?v=1",
+      //   coursename: "Combo for FP&A and Audit MasterClass",
+      //   author: "",
+      //   mrp: "Rs 16000",
+      //   offerprice: "Rs 3499/-",
+      //   url: "https://www.thinkingbridge.in/courses/Combo-for-FPA-and-Audit-MasterClass-6567010de4b0bc29ae83ef1f",
+      // },
     ],
     [
       {
@@ -1105,7 +1178,7 @@
         .attr("data-initial", getUserInitial(SPUSER.email, SPUSER.name));
     });
   }
-  var showcourses = "all courses";
+  var showcourses = "Flagship MasterClasses [Domain-Wise]";
   $(function () {
     var header = $(".box75687");
     $(window).scroll(function () {
@@ -1123,14 +1196,15 @@
     navbarNav[i].addEventListener("mouseover", handleHover);
   }
   function handleHover(event) {
-    const val = event.target.innerText.trim().replace(/\n/g, " ");
+    let val = event.target.innerText.trim().replace(/\n/g, " ");
+    val = val.toLowerCase();
     if (
-      val == "Flagship MasterClasses [Domain-Wise]" ||
-      val == "All Courses" ||
-      val == "Finance Tools MasterClasses" ||
-      val == "Combo Packages" ||
-      val == "Free Courses"
-    ) {
+ val == "flagship masterclasses [domain-wise]" ||
+ val == "all courses" ||
+ val == "finance tools masterclasses" ||
+ val == "combo packages" ||
+ val == "free courses"
+ ) {
       showcourses = val;
       updateShowCourses();
     }
@@ -1141,21 +1215,22 @@
       showcourses.toLowerCase() === "flagship masterclasses [domain-wise]" ||
       type == "Flagship MasterClasses [Domain-Wise]"
     ) {
-      displayCourseCards(data[0]);
+      displayCourseCards(data[0],'FLAGSHIP MASTERCLASSES');
     } else if (
       showcourses.toLowerCase() === "finance tools masterclasses" ||
       type == "Finance Tools MasterClasses"
     ) {
-      displayCourseCards(data[1]);
+      displayCourseCards(data[1],'FINANCE TOOLS');
     } else if (
       showcourses.toLowerCase() === "combo packages" ||
       type == "Combo Packages"
     ) {
-      displayCourseCards(data[2]);
+      displayCourseCards(data[2],'COMBOS');
     } else if (
       showcourses.toLowerCase() === "free courses" ||
       type == "Free Courses"
     ) {
+      // displayCourseCards(data[3],'FREE COURSES'); 
       displayCourseCards(data[3]);
     } else if (
       showcourses.toLowerCase() === "all courses" ||
@@ -1177,26 +1252,36 @@
       <div class="course-card" data-url="${course.url}">
         <img src="${course.image}" class="card-img-top" alt="${course.coursename}">
         <div class="course-card-body">
-          <h5 class="card-coursename">${course.coursename}</h5>
+     
         </div>
       </div>
     `;
+         // <h5 class="card-coursename">${course.coursename}</h5>
         coursesContainer.append(cardHtml);
       });
 
-      if (type === "all") {
-        const buttonHtml = `
-      <div class="btn-div">
-        <button class="btn btn-primary viewmore-btn">View More</button>
-      </div>
-    `;
-        coursesContainer.append(buttonHtml);
-        coursesContainer.on("click", ".viewmore-btn", function () {
-          window.location.href =
-            "https://www.thinkingbridge.in/s/pages/courses";
+      const buttonHtml = `
+  <div class="btn-div">
+    <button class="button-33 viewmorebtn" style="padding:20px ; font-size:12px ;font-weight:bold ;border-radius:10px">VIEW ALL ${type}</button>
+  </div>
+`;
+        if(type) coursesContainer.append(buttonHtml);
+        coursesContainer.on("click", ".viewmorebtn", function () {
+          let url;
+          if(type=='FLAGSHIP MASTERCLASSES'){
+            url='https://www.thinkingbridge.in/s/store/courses/Flagship MasterClass'
+          }
+          else if(type=='FINANCE TOOLS'){
+            url='https://www.thinkingbridge.in/s/store/courses/Finance Tools'
+          }
+          else if(type=='COMBOS'){
+            url='https://www.thinkingbridge.in/s/store/courses/Combo Courses'
+          }
+          else if(type=='FREE COURSES'){
+            url='https://www.thinkingbridge.in/s/store/courses/Free'
+          }
+          window.location.href = url;
         });
-      }
-
       coursesContainer.on("click", ".course-card", function () {
         const url = $(this).data("url");
         if (url) {
@@ -1249,9 +1334,11 @@
     function getclassname(val) {
       if (val == "Flagship MasterClasses [Domain-Wise]") {
         return "flagship";
-      } else if (val == "All Courses") {
-        return "allcourses";
-      } else if (val == "Finance Tools MasterClasses") {
+      }
+      //  else if (val == "All Courses") {
+      //   return "allcourses";
+      // }
+       else if (val == "Finance Tools MasterClasses") {
         return "financetools";
       } else if (val == "Combo Packages") {
         return "combopackages";
@@ -1278,12 +1365,13 @@
           array.forEach((course) => {
             const cardHtml = `
       <div class="course-card" data-url="${course.url}">
-        <img src="${course.image}" class="card-img-top" alt="${course.coursename}">
+        <img src="https://www.thinkingbridge.in/s/pages/assets/images/loggg342.png" class="card-img-mobile" alt="${course.coursename}" style="background-color:black">
         <div class="course-card-body">
-          <h5 class="card-coursename">${course.coursename}</h5>
+          <h4 class="card-coursename">${course.coursename}</h4>
         </div>
       </div>
     `;
+    // 
     wrapperDiv.innerHTML += cardHtml;
           });
 
